@@ -7,11 +7,11 @@
 
   Author: Caner Turkmen <caner.turkmen@boun.edu.tr>
 */
-
-#define EMASC 0.577215664901532860606512090082 /* Euler-Mascheroni constant */
-
+#include "digamma.h"
 #include <math.h>
 #include <errno.h>
+
+#define EMASC 0.577215664901532860606512090082 /* Euler-Mascheroni constant */
 
 double digamma(double x){
   double xpm2;

@@ -18,5 +18,19 @@ int main(int argc, char *argv[]){
   printf("1000, 1000,  0.500: %.10e \n", betainc(0.500, 1e3, 1e3, 100));
   printf("1000, 1000,  0.550: %.10e \n", betainc(0.550, 1e3, 1e3, 100));
 
+  printf("\n start test -- betaincderp \n");
+
+  printf("1.5,  11.0,  0.001: %.10e \n", betaincderp(0.001, 1.5, 11.0, 100));
+  printf("1.5,  11.0,  0.500: %.10e \n", betaincderp(0.500, 1.5, 11.0, 100));
+  printf("1000, 1000,  0.500: %.10e \n", betaincderp(0.500, 1e3, 1e3, 100));
+  printf("1000, 1000,  0.550: %.10e \n", betaincderp(0.550, 1e3, 1e3, 100));
+
+  printf("\n start test -- betaincderq \n");
+
+  printf("1.5,  11.0,  0.001: %.10e \n", betaincderq(0.001, 1.5, 11.0, 100));
+  printf("1.5,  11.0,  0.500: %.10e \n", betaincderq(0.500, 1.5, 11.0, 100));
+  printf("1000, 1000,  0.500: %.10e \n", betaincderq(0.500, 1e3, 1e3, 100));
+  printf("1000, 1000,  0.550: %.10e \n", betaincderq(0.550, 1e3, 1e3, 100));
+
   return 0;
 }
