@@ -34,9 +34,9 @@ except:
     LONG_DESCRIPTION = DESCRIPTION
 
 # make extension
-ext_betaincder = Extension("betaincder", ["betaincder/betaincder.pyx"]
-                   libraries=["m"],
-                   extra_compile_args=["-O3", "-march=native"])
+ext_betaincder = Extension("betaincder.c.betaincder", ["betaincder/c/betaincder.pyx"],
+                               libraries=["m"],
+                               extra_compile_args=["-O3", "-march=native"])
 
 setup(name="betaincder",
       version="0.0.1",
@@ -46,7 +46,7 @@ setup(name="betaincder",
       author="Caner Turkmen",
       author_email="caner.turkmen@boun.edu.tr",
       ext_modules=cythonize([ext_betaincder]),
-      packages=["betaincder", "betaincder.c"]
+      packages=["betaincder", "betaincder.c"],
       install_requires=["Cython"],
       license="MIT"
 )
