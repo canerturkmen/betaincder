@@ -9,9 +9,8 @@ except ImportError:
 
 try:
     from Cython.Build import cythonize
-    import numpy
 except ImportError:
-    raise SystemExit("Cython>=0.28 and numpy are required. Please install before proceeding")
+    raise SystemExit("Cython>=0.28 is required. Please install before proceeding")
 
 DESCRIPTION = "compute the incomplete Beta function and its derivatives"
 CLASSIFIERS = [
