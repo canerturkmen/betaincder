@@ -7,25 +7,19 @@
 
   Author: Caner Turkmen <caner.turkmen@boun.edu.tr>
 */
-#include "digamma.h"
+#include "betaincder.h"
 #include <math.h>
-#include <errno.h>
 
 #define EMASC 0.577215664901532860606512090082 /* Euler-Mascheroni constant */
 
-double digamma(double x){
+double _digamma(double x){
   double xpm2;
-
-  if (x <= 0){
-    perror("provide x > 0");
-    return -1;
-  }
 
   if (x <= 1e-5)
     return -EMASC - (1 / x);
 
   if (x < 8.5)
-    return digamma(1 + x) - 1 / x;
+    return _digamma(1 + x) - 1 / x;
 
   xpm2 = pow(x, -2);
   return log(x) - 0.5 / x

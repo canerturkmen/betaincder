@@ -10,15 +10,14 @@
 
   Author: Caner Turkmen <caner.turkmen@boun.edu.tr>
 */
-#include "beta.h"
-#include "digamma.h"
+#include "betaincder.h"
 #include <math.h>
 
-double betaln(double p, double q){
+double _betaln(double p, double q){
   return lgamma(p) + lgamma(q) - lgamma(p + q);
 }
 
-double beta(double p, double q){
+double _beta(double p, double q){
   return exp(lgamma(p) + lgamma(q) - lgamma(p + q));
 }
 
@@ -45,16 +44,16 @@ double b_n(double x, double p, double q, int n){
   return N1/D1;
 }
 
-double betainc(double x, double p, double q, int ord){
+double _betainc(double x, double p, double q, int ord){
 
     double Am2 = 1, Am1 = 1;
     double Bm2 = 0, Bm1 = 1;
     double a_n_, b_n_, K, A, B;
 
     if (x > p/(p+q))
-      return 1 - betainc(1-x, q, p, ord);
+      return 1 - _betainc(1-x, q, p, ord);
 
-    K = exp(p * log(x) + (q - 1) * log(1 - x) - log(p) - betaln(p, q));
+    K = exp(p * log(x) + (q - 1) * log(1 - x) - log(p) - _betaln(p, q));
 
     for (int n = 1; n < ord + 1; n++) {
       a_n_ = a_n(x, p, q, n);
@@ -120,7 +119,7 @@ double _db_n_dq(double x, double p, double q, int n){
     return -(p*p * f) / (q * (p + 2*n - 2) * (p + 2*n));
 }
 
-double betaincderp(double x, double p, double q, int ord){
+double _betaincderp(double x, double p, double q, int ord){
     double Am2 = 1 , Am1 = 1 , A;
     double Bm2 = 0 , Bm1 = 1 , B;
     double dAm2 = 0, dAm1 = 0, dA;
@@ -129,9 +128,9 @@ double betaincderp(double x, double p, double q, int ord){
     double da_n_dp, db_n_dp;
 
     if (x > p/(p+q))
-      return -betaincderq(1-x, q, p, ord);
+      return -_betaincderq(1-x, q, p, ord);
 
-    K = exp(p * log(x) + (q - 1) * log(1 - x) - log(p) - betaln(p, q));
+    K = exp(p * log(x) + (q - 1) * log(1 - x) - log(p) - _betaln(p, q));
 
     for (int n = 1; n < ord + 1; n++) {
       a_n_ = a_n(x, p, q, n);
@@ -148,11 +147,11 @@ double betaincderp(double x, double p, double q, int ord){
       Bm2 = Bm1;  Bm1 = B;  dBm2 = dBm1;  dBm1 = dB;
     }
 
-    F1 = A / B * (log(x) - 1/p + digamma(p+q) - digamma(p)) + dA/B - A*dB/(B*B);
+    F1 = A / B * (log(x) - 1/p + _digamma(p+q) - _digamma(p)) + dA/B - A*dB/(B*B);
     return K * F1;
 }
 
-double betaincderq(double x, double p, double q, int ord){
+double _betaincderq(double x, double p, double q, int ord){
     double Am2 = 1 , Am1 = 1 , A;
     double Bm2 = 0 , Bm1 = 1 , B;
     double dAm2 = 0, dAm1 = 0, dA;
@@ -161,9 +160,9 @@ double betaincderq(double x, double p, double q, int ord){
     double da_n_dq, db_n_dq;
 
     if (x > p/(p+q))
-      return -betaincderp(1-x, q, p, ord);
+      return -_betaincderp(1-x, q, p, ord);
 
-    K = exp(p * log(x) + (q - 1) * log(1 - x) - log(p) - betaln(p, q));
+    K = exp(p * log(x) + (q - 1) * log(1 - x) - log(p) - _betaln(p, q));
 
     for (int n = 1; n < ord + 1; n++) {
       a_n_ = a_n(x, p, q, n);
@@ -180,6 +179,6 @@ double betaincderq(double x, double p, double q, int ord){
       Bm2 = Bm1;  Bm1 = B;  dBm2 = dBm1;  dBm1 = dB;
     }
 
-    F1 = A / B * (log(1-x) + digamma(p+q) - digamma(q)) + dA/B - A*dB/(B*B);
+    F1 = A / B * (log(1-x) + _digamma(p+q) - _digamma(q)) + dA/B - A*dB/(B*B);
     return K * F1;
 }
