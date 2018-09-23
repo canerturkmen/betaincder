@@ -127,6 +127,9 @@ double _betaincderp(double x, double p, double q, int ord){
     double a_n_, b_n_, K, F1;
     double da_n_dp, db_n_dp;
 
+    if (x == 0)
+      return 0;
+
     if (x > p/(p+q))
       return -_betaincderq(1-x, q, p, ord);
 
@@ -158,6 +161,9 @@ double _betaincderq(double x, double p, double q, int ord){
     double dBm2 = 0, dBm1 = 0, dB;
     double a_n_, b_n_, K, F1;
     double da_n_dq, db_n_dq;
+
+    if (x == 0)
+      return 0;
 
     if (x > p/(p+q))
       return -_betaincderp(1-x, q, p, ord);
