@@ -63,6 +63,12 @@ class BetaIncTests(ut.TestCase):
     def test_betainc_4(self):
         self.assertAlmostEqual(betainc(0.55, 1e3, 1e3), 9.9999631680e-01)
 
+    def test_betainc_at_zero(self):
+        self.assertAlmostEqual(betainc(0., 10, 10), 0)
+
+    def test_betainc_at_one(self):
+        self.assertAlmostEqual(betainc(1., 10, 10), 1)
+
 
 class BetaIncDerTests(ut.TestCase):
     """values taken from the table in Boik&Robinson-Cox"""
@@ -79,6 +85,12 @@ class BetaIncDerTests(ut.TestCase):
     def test_betaincdp_4(self):
         self.assertAlmostEqual(betaincderp(0.55, 1e3, 1e3), -3.6713107970e-07)
 
+    def test_betaincdp_at_zero(self):
+        self.assertAlmostEqual(betaincderp(0., 10, 10), 0)
+
+    def test_betaincdp_at_one(self):
+        self.assertAlmostEqual(betaincderp(1., 10, 10), 0)
+
     def test_betaincdq_1(self):
         self.assertAlmostEqual(betaincderq(0.001, 1.5, 11.0), 1.1845672718e-04)
 
@@ -90,3 +102,9 @@ class BetaIncDerTests(ut.TestCase):
 
     def test_betaincdq_4(self):
         self.assertAlmostEqual(betaincderq(0.55, 1e3, 1e3), 4.0584118313e-07)
+
+    def test_betaincdq_at_zero(self):
+        self.assertAlmostEqual(betaincderq(0., 10, 10), 0)
+
+    def test_betaincdq_at_one(self):
+        self.assertAlmostEqual(betaincderq(1., 10, 10), 0)
