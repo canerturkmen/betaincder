@@ -24,6 +24,23 @@ $ pip install -U Cython
 $ pip install git+https://github.com/canerturkmen/betaincder
 ```
 
+## Usage
+
+The functions can be invoked from python, or `cimport`ed from Cython.
+
+```python
+from betaincder import betainc, betaincderp, betaincderq
+print betaincderq(.5, 10, 10)
+```
+
+or
+
+```python
+%%cython 
+from betaincder.c.betaincder cimport digamma, betaln, betainc, betaincderq
+print betaincderq(.5, 10, 10)
+```
+
 ## References
 - Robinson-Cox, J. F., & Boik, R. J. (1998). Derivatives of the Incomplete Beta Function. Journal of Statistical Software, 3(01).
 - Bernardo, Jose M. "Algorithm AS 103: Psi (digamma) function." Journal of the Royal Statistical Society. Series C (Applied Statistics) 25.3 (1976): 315-317.

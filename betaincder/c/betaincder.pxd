@@ -1,0 +1,6 @@
+cpdef double digamma(double x)
+cpdef double beta(double p, double q)
+cpdef double betaln(double p, double q)
+cpdef double betainc(double x, double p, double q)
+cpdef double betaincderp(double x, double p, double q)
+cpdef double betaincderq(double x, double p, double q)
