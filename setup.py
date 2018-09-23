@@ -47,5 +47,7 @@ setup(name="betaincder",
       ext_modules=cythonize([ext_betaincder]),
       packages=["betaincder", "betaincder.c"],
       install_requires=["Cython"],
-      license="MIT"
+      license="MIT",
+      package_dir={'betaincder.c': 'betaincder/c/'},
+      package_data={'betaincder.c': ['*.pxd', '*.h']}
 )
