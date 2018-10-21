@@ -35,7 +35,7 @@ except:
 # make extension
 ext_betaincder = Extension("betaincder.c.betaincder", ["betaincder/c/betaincder.pyx"],
                                libraries=["m"],
-                               extra_compile_args=["-O3", "-march=native"])
+                               extra_compile_args=["-O3", "-march=native", "-std=c99"])
 
 setup(name="betaincder",
       version="0.0.1",
