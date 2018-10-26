@@ -7,10 +7,7 @@ except ImportError:
     from distutils.core import setup
     from distutils.extension import Extension
 
-try:
-    from Cython.Build import cythonize
-except ImportError:
-    raise SystemExit("Cython>=0.28 is required. Please install before proceeding")
+from Cython.Build import cythonize
 
 DESCRIPTION = "compute the incomplete Beta function and its derivatives"
 CLASSIFIERS = [
@@ -46,7 +43,7 @@ setup(name="betaincder",
       author_email="caner.turkmen@boun.edu.tr",
       ext_modules=cythonize([ext_betaincder]),
       packages=["betaincder", "betaincder.c"],
-      install_requires=["Cython"],
+      setup_requires=["Cython"],
       license="MIT",
       package_dir={'betaincder.c': 'betaincder/c/'},
       package_data={'betaincder.c': ['*.pxd', '*.h']}
