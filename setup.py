@@ -2,10 +2,10 @@ import io
 import os
 
 try:
-    from setuptools import setup, Extension
-except ImportError:
     from distutils.core import setup
     from distutils.extension import Extension
+except ImportError:
+    from setuptools import setup, Extension
 
 from Cython.Build import cythonize
 
@@ -21,6 +21,7 @@ CLASSIFIERS = [
     'Topic :: Scientific/Engineering :: Information Analysis',
     'Topic :: Scientific/Engineering :: Mathematics'
 ]
+
 # make description
 try:
     here = os.path.abspath(os.path.dirname(__file__))
@@ -31,11 +32,10 @@ except:
 
 # make extension
 ext_betaincder = Extension("betaincder.c.betaincder", ["betaincder/c/betaincder.pyx"],
-                               libraries=["m"],
-                               extra_compile_args=["-O3", "-march=native", "-std=c99"])
+                               libraries=["m"], extra_compile_args=["-O3", "-march=native", "-std=c99"])
 
 setup(name="betaincder",
-      version="0.0.1",
+      version="0.1",
       description=DESCRIPTION,
       long_description=LONG_DESCRIPTION,
       long_description_content_type="text/markdown",

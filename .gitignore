@@ -3,3 +3,10 @@
 *.so
 *.pyc
 *betaincder.c
+
+.idea/
+.tox/
+MANIFEST
+*egg-info/
+dist/
+build/
