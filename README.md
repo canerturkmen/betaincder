@@ -17,11 +17,8 @@ This tiny library contains some C/Cython code for calculating
 
 ## Installation
 
-Cython is required!
-
 ```bash
-$ pip install -U Cython
-$ pip install git+https://github.com/canerturkmen/betaincder
+$ pip install betaincder
 ```
 
 ## Usage

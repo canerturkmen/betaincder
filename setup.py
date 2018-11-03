@@ -12,6 +12,7 @@ except ImportError:
 DESCRIPTION = "compute the incomplete Beta function and its derivatives"
 CLASSIFIERS = [
     'Programming Language :: Python :: 2.7',
+    'Programming Language :: Python :: 3.6',
     'Programming Language :: Cython',
     'Development Status :: 2 - Pre-Alpha',
     'Intended Audience :: Developers',
@@ -25,7 +26,7 @@ CLASSIFIERS = [
 # make description
 try:
     here = os.path.abspath(os.path.dirname(__file__))
-    with io.open(os.path.join(here, 'README.markdown'), encoding='utf-8') as f:
+    with io.open(os.path.join(here, 'README.md'), encoding='utf-8') as f:
         LONG_DESCRIPTION = '\n' + f.read()
 except:
     LONG_DESCRIPTION = DESCRIPTION
@@ -50,5 +51,6 @@ setup(name="betaincder",
       setup_requires=["Cython"],
       license="MIT",
       package_dir={'betaincder.c': 'betaincder/c/'},
-      package_data={'betaincder.c': ['.pxd', '.h', '.c']}
+      package_data={'betaincder.c': ['.pxd', '.h', '.c']},
+      classifiers=CLASSIFIERS
 )
