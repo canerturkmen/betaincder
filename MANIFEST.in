@@ -5,5 +5,6 @@ include README.md
 include betaincder/c/betaincder.pyx
 include betaincder/c/betaincder.pxd
 include betaincder/c/betaincder.h
+include betaincder/c/betaincder.c
 include betaincder/c/digamma.c
 include betaincder/c/beta.c
