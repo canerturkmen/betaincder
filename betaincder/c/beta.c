@@ -18,7 +18,7 @@ double _betaln(double p, double q){
 }
 
 double _beta(double p, double q){
-  return exp(lgamma(p) + lgamma(q) - lgamma(p + q));
+  return exp(_betaln(p, q));
 }
 
 double a_n(double x, double p, double q, int n){
