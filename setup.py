@@ -1,13 +1,11 @@
 import io
 import os
 
-import sys
-
 try:
+    from setuptools import setup, Extension
+except ImportError:
     from distutils.core import setup
     from distutils.extension import Extension
-except ImportError:
-    from setuptools import setup, Extension
 
 DESCRIPTION = "compute the incomplete Beta function and its derivatives"
 CLASSIFIERS = [
@@ -31,16 +29,11 @@ try:
 except:
     LONG_DESCRIPTION = DESCRIPTION
 
-if "--use-cython" in sys.argv:
-    from Cython.Build import cythonize
-    extension = cythonize([Extension("betaincder.c.betaincder", ["betaincder/c/betaincder.pyx"],
-                               libraries=["m"], extra_compile_args=["-O3", "-march=native", "-std=c99"])])
-else:
-    extension = [Extension("betaincder.c.betaincder", ["betaincder/c/betaincder.c"],
+extension = [Extension("betaincder.c.betaincder", ["betaincder/c/betaincder.c"],
                                libraries=["m"], extra_compile_args=["-O3", "-march=native", "-std=c99"])]
 
 setup(name="betaincder",
-      version="0.1",
+      version="0.1.1",
       description=DESCRIPTION,
       long_description=LONG_DESCRIPTION,
       long_description_content_type="text/markdown",
@@ -51,6 +44,6 @@ setup(name="betaincder",
       setup_requires=["Cython"],
       license="MIT",
       package_dir={'betaincder.c': 'betaincder/c/'},
-      package_data={'betaincder.c': ['.pxd', '.h', '.c']},
+      package_data={'betaincder.c': ['*.pxd', '*.h', '*.c']},
       classifiers=CLASSIFIERS
 )
